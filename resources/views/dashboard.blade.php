@@ -1,3 +1,3 @@
 <x-app-layout>
-    @include('tables.table')
+    <x-tables.table />
 </x-app-layout>

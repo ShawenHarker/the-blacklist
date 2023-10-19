@@ -17,19 +17,17 @@
 .box {
     width: 100%;
     text-align: center;
-    background-color: #f6f6f6;
     padding: 10px;
     margin: 0;
     border: 1px solid #ccc;
-}
-
-.table {
-    width: 100%;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .table-head {
     background-color: lightblue;
     height: 50px;
+    border-bottom: 1px solid #ccc;
 }
 
 .header-logo {
@@ -38,5 +36,24 @@
 }
 
 .black-list {
-    text-decoration: line-through red 5px;
+    text-decoration: line-through wavy red 2px;
+}
+
+.table-styling {
+    border: 1px solid #ccc;
+    border-top: 0px;
+}
+
+.table-row {
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.table-row:nth-child(odd) {
+    background-color: rgb(232, 245, 249);
+}
+
+.table-column {
+    height: 50px;
+    padding: 6px 9px;
 }

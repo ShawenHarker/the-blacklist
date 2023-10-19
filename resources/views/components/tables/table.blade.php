@@ -11,7 +11,8 @@
         </div>
         @endforeach
     </div>
-    <table class="table">
-        @include('tables.tableHead')
+    <table class="table-styling w-full whitespace-nowrap">
+        <x-tables.table-head />
+        <x-tables.table-body />
     </table>
 </div>
