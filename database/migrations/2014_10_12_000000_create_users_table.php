@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('role_id');
             $table->string('firstName');
             $table->string('lastName');
-            $table->string('email');
             $table->string('location');
             $table->string('university');
             $table->boolean('is_admin')->default(false);
