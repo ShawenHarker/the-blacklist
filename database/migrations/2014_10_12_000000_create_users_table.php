@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('lastName');
             $table->string('location');
             $table->boolean('is_admin')->default(false);
+            $table->boolean('is_blacklisted')->default(false);
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
         });
