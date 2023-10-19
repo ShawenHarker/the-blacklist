@@ -17,7 +17,12 @@ class UniversityFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'location' => fake()->address(),
+            'website' => fake()->url(),
+            'studentCount' => fake()->numberBetween(0, 10000),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
