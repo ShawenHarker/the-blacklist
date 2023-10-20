@@ -1,3 +1,3 @@
 <x-app-layout>
-    <x-tables.table />
+    <x-tables.table :users="$users"/>
 </x-app-layout>

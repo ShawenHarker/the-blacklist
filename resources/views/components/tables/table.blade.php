@@ -1,3 +1,5 @@
+@props(['users'])
+
 <?php 
     $tabs = ["Students", "Universities", "Blacklisted"];
     $selectedTab = "Students";
@@ -13,6 +15,6 @@
     </div>
     <table class="table-styling w-full whitespace-nowrap">
         <x-tables.table-head />
-        <x-tables.table-body />
+        <x-tables.table-body :users="$users" />
     </table>
 </div>

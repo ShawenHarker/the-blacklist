@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('role_id');
             $table->foreignId('university_id');
-            $table->string('firstName');
-            $table->string('lastName');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('location');
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_blacklisted')->default(false);
