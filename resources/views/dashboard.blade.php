@@ -42,7 +42,9 @@
             <x-table-column>
                 {{ $date = $user->updated_at->format('d/m/Y') }}
             </x-table-column>
-            <x-action-button-table></x-action-button-table>
+            <x-table-column>
+                <x-action-button-table></x-action-button-table>
+            </x-table-column>
             </tr>
             @endforeach
             </tboby>
