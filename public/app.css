@@ -1,3 +1,5 @@
+@import "node_modules/@fortawesome/fontawesome-free/css/all.css";
+
 .display-body {
     margin: 2rem auto;
     background-color: #f6f6f6;

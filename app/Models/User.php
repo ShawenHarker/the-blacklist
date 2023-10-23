@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -42,4 +43,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function university()
+    {
+        return $this->belongsTo(University::class);
+    }
+
+    // protected function setBirthdateAttribute($value)
+    // {
+    //     $this->attributes['Date created'] = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(format: 'dd/MM/yyyy');
+    //     $this->attributes['updated_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(format: 'dd/MM/yyyy');
+    // }
 }

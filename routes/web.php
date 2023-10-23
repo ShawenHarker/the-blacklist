@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\University;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,11 @@ use App\Models\User;
 
 Route::get('/', function () {
     $users = User::all();
-    return view('dashboard')->with('users', $users);	
+    $universities = University::all();
+    return view('dashboard', [
+        'users' => $users,
+        'universities' => $universities
+    ]);	
 });
 
 Route::get('/dashboard', function () {

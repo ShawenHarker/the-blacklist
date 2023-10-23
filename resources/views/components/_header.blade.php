@@ -1,6 +1,8 @@
 <div class="flex justify-between p-6 border-b-2">
     <x-logo />
 
+    <x-nav-bar />
+
     @if (Route::has('login'))
         <div >
             @auth

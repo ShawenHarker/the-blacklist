@@ -9,6 +9,7 @@
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="{{asset('fontawesome-free-6.4.2-web/css/all.min.css')}}" />
         <link rel="stylesheet" href="/app.css">
         
         <script src="/app.js"></script>
@@ -18,7 +19,9 @@
         <div class="min-h-screen bg-gray-100">
             @include('components._header')
             <main>
-                {{ $slot }}
+                <div class="display-body">
+                    {{ $slot }}
+                </div>
             </main>
         </div>
     </body>
