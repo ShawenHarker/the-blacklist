@@ -20,7 +20,7 @@ class UniversityFactory extends Factory
             'name' => fake()->name(),
             'location' => fake()->address(),
             'website' => fake()->url(),
-            'studentCount' => fake()->numberBetween(0, 10000),
+            'student_count' => fake()->numberBetween(0, 10000),
             'created_at' => now(),
             'updated_at' => now(),
         ];

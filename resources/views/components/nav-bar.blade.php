@@ -1,16 +1,20 @@
 <?php 
     $tableList = [
         [
+            'name' => 'Dashboard',
+            'url' => 'dashboard',
+        ],
+        [
             'name' => 'Students',
-            'url' => 'students',
+            'url' => 'dashboard/students',
         ],
         [
             'name' => 'Universities',
-            'url' => 'universities',
+            'url' => 'dashboard/universities',
         ],
         [
             'name' => 'BlackListed Students',
-            'url' => 'blacklisted-students',
+            'url' => 'dashboard/blacklisted-students',
         ]
     ]
 ?>
