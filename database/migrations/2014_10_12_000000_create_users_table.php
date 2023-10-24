@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('location');
             $table->boolean('is_blacklisted')->default(false);
+            $table->string('reason_for_blacklisting')->nullable();
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
         });

@@ -49,9 +49,14 @@ class User extends Authenticatable
         return $this->belongsTo(University::class);
     }
 
-    // protected function setBirthdateAttribute($value)
-    // {
-    //     $this->attributes['Date created'] = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(format: 'dd/MM/yyyy');
-    //     $this->attributes['updated_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(format: 'dd/MM/yyyy');
-    // }
+    public function scopeFilter($query, array $filters)
+    {
+        if ($filters['search'] ?? false) {
+            $query
+                ->where('first_name', 'like', '%' . request('search') . '%')
+                ->orWhere('last_name', 'like', '%' . request('search') . '%')
+                ->orWhere('location', 'like', '%' . request('search') . '%')
+                ->orWhere('reason_for_blacklisting', 'like', '%' . request('search') . '%');
+        }
+    }
 }

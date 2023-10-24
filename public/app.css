@@ -1,8 +1,15 @@
 @import "node_modules/@fortawesome/fontawesome-free/css/all.css";
 
+:root {
+    --bg-color-1: #f6f6f6;
+    --gray: #cccccc;
+    --lightblue: lightblue;
+    --red: red;
+}
+
 .display-body {
     margin: 2rem auto;
-    background-color: #f6f6f6;
+    background-color: var(--bg-color);
     padding: 20px;
     border-radius: 10px;
     width: 98%;
@@ -21,15 +28,15 @@
     text-align: center;
     padding: 10px;
     margin: 0;
-    border: 1px solid #ccc;
+    border: 1px solid var(--gray);
     cursor: pointer;
     z-index: 1;
 }
 
 .table-head {
-    background-color: lightblue;
-    height: 50px;
-    border-bottom: 1px solid #ccc;
+    background-color: var(--lightblue);
+    height: 60px;
+    border-bottom: 1px solid var(--gray);
 }
 
 .header-logo {
@@ -38,24 +45,30 @@
 }
 
 .black-list {
-    text-decoration: line-through wavy red 2px;
+    text-decoration: line-through wavy var(--red) 2px;
 }
 
 .table-styling {
-    border: 1px solid #ccc;
+    border: 1px solid var(--gray);
     border-top: 0px;
 }
 
 .table-row {
     text-align: center;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--gray);
 }
 
-.table-row:nth-child(odd) {
-    background-color: rgb(232, 245, 249);
+.table-row:nth-child(even) {
+    background-color: var(--gray);
 }
 
 .table-column {
-    height: 50px;
+    height: 40px;
     padding: 6px 9px;
+}
+
+.search-bar {
+    width: 30%;
+    padding: 0.5rem;
+    margin: 1rem 0;
 }

@@ -13,4 +13,13 @@ class University extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        if ($filters['search'] ?? false) {
+            $query
+                ->where('name', 'like', '%' . request('search') . '%')
+                ->orWhere('location', 'like', '%' . request('search') . '%');
+        }
+    }
 }

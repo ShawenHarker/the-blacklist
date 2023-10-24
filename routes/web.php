@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\University;
@@ -16,37 +18,17 @@ use App\Models\University;
 |
 */
 
-Route::get('dashboard', function () {
-    $users = User::all();
-    return view('dashboard', [
-        'users' => $users,
-    ]);	
-});
+Route::get('dashboard', [UserController::class, 'index'])->name('dashboard');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('dashboard/students', function () {
-    $users = User::all();
-    return view('tables/students', [
-        'users' => $users,
-    ]);
-});
+Route::get('dashboard/students', [UserController::class, 'student'])->name('dashboard.student');
 
-Route::get('dashboard/universities', function () {
-    $universities = University::all();
-    return view('tables/universities', [
-        'universities' => $universities
-    ]);
-});
+Route::get('dashboard/universities', [UniversityController::class, 'index'])->name('dashboard.universities');
 
-Route::get('dashboard/blacklisted-students', function () {
-    $users = User::all();
-    return view('tables/blacklisted-students', [
-        'users' => $users
-    ]);
-});
+Route::get('dashboard/blacklisted-students', [UserController::class, 'blacklisted'])->name('dashboard.blacklisted');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

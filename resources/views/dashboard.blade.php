@@ -14,9 +14,12 @@
 <x-app-layout> 
     <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center mb-4">Dashboard</h2> 
     <h4
-    class="font-semibold text-md text-gray-800 leading-tight text-center mb-6">All Students</h4>
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-8 border-gray-500"> 
-        <x-table-header :header=$studentTableHeader /> 
+    class="font-semibold text-md text-gray-800 leading-tight text-center">All Students</h4>
+    <x-search-bar />
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-8 border-gray-500">
+        <thead class="table-head">
+            <x-table-header :header=$studentTableHeader />
+        </thead>
         <tboby class="table-body-styling">
             @foreach ($users as $user)
                 <tr class="table-row">

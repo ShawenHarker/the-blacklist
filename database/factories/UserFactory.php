@@ -23,6 +23,7 @@ class UserFactory extends Factory
             'last_name' => fake()->name(),
             'location' => fake()->address(),
             'is_blacklisted' => fake()->boolean(),
+            'reason_for_blacklisting' => fake()->text(),
             'created_at' => now(),
             'updated_at' => now(),
         ];
