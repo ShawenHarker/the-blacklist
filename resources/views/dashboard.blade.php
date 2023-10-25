@@ -17,9 +17,7 @@
     class="font-semibold text-md text-gray-800 leading-tight text-center">All Students</h4>
     <x-search-bar />
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-8 border-gray-500">
-        <thead class="table-head">
-            <x-table-header :header=$studentTableHeader />
-        </thead>
+        <x-table-header :header=$studentTableHeader></x-table-header>
         <tboby class="table-body-styling">
             @foreach ($users as $user)
                 <tr class="table-row">
@@ -54,5 +52,6 @@
                 </tr>
             @endforeach
         </tboby>
+        <x-table-footer :page=$users ></x-table-footer>
     </table>
     </x-app-layout>

@@ -10,13 +10,13 @@ class UserController extends Controller
     public function index()
     {
         return view('dashboard', [
-            'users' => User::latest()->filter(request(['search']))->get(),
+            'users' => User::latest()->filter(request(['search', 'university']))->paginate(10)->withQueryString(),
         ]);
     }
 
     public function student()
     {
-        $users = User::all();
+        $users = User::latest()->paginate(10)->withQueryString();
         return view('students', [
             'users' => $users,
         ]);
@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function blacklisted()
     {
-        $users = User::all();
+        $users = User::latest()->paginate(10)->withQueryString();
         return view('blacklisted-students', [
             'users' => $users
         ]);

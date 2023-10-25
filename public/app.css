@@ -3,6 +3,7 @@
 :root {
     --bg-color-1: #f6f6f6;
     --gray: #cccccc;
+    --dark-gray: #767272;
     --lightblue: lightblue;
     --red: red;
 }
@@ -33,7 +34,12 @@
     z-index: 1;
 }
 
-.table-head {
+.table {
+    width: 100%;
+    color: var(--dark-gray);
+}
+
+.table-header-footer {
     background-color: var(--lightblue);
     height: 60px;
     border-bottom: 1px solid var(--gray);
@@ -71,4 +77,11 @@
     width: 30%;
     padding: 0.5rem;
     margin: 1rem 0;
+}
+
+.table-footer {
+    background-color: var(--lightblue);
+    height: 60px;
+    border-top: 1px solid var(--gray);
+    width: 100%;
 }

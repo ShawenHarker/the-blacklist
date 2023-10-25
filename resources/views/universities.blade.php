@@ -14,11 +14,8 @@
     <h2 class="font-semibold text-md text-gray-800 leading-tight text-center mb-6">Universities</h2>
     <x-search-bar />
 
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-8 border-gray-500">
-        <thead class="table-head">
-            <x-table-header :header=$universityTableHeader />
-        </thead>
-
+    <table class="table">
+        <x-table-header :header=$universityTableHeader ></x-table-header>
         <tboby class="table-body-styling">
             @foreach ($universities as $university)
                 <tr class="table-row">
@@ -46,5 +43,6 @@
                 </tr>
             @endforeach
         </tboby>
+        <x-table-footer :page=$universities ></x-table-footer>
     </table>
 </x-app-layout>
