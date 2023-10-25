@@ -17,6 +17,9 @@ return new class extends Migration
             $table->foreignId('university_id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('email', 150)->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->string('location');
             $table->boolean('is_blacklisted')->default(false);
             $table->string('reason_for_blacklisting')->nullable();
