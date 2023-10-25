@@ -34,6 +34,21 @@
     z-index: 1;
 }
 
+.header-logo {
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+.black-list {
+    text-decoration: line-through wavy var(--red) 2px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 1rem 0;
+}
+
 .table {
     width: 100%;
     color: var(--dark-gray);
@@ -43,15 +58,6 @@
     background-color: var(--lightblue);
     height: 60px;
     border-bottom: 1px solid var(--gray);
-}
-
-.header-logo {
-    font-weight: 900;
-    font-size: 1.5rem;
-}
-
-.black-list {
-    text-decoration: line-through wavy var(--red) 2px;
 }
 
 .table-styling {
@@ -71,12 +77,6 @@
 .table-column {
     height: 40px;
     padding: 6px 9px;
-}
-
-.search-bar {
-    width: 30%;
-    padding: 0.5rem;
-    margin: 1rem 0;
 }
 
 .table-footer {
