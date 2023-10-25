@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin',
         ]);
 
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(100)->create();
 
-        \App\Models\University::factory(3)->create();
+        \App\Models\University::factory(20)->create();
     }
 }

@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class University extends Model
 {
     use HasFactory;
+
+    public function users ()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function scopeFilter($query, array $filters)
+    {
+        if ($filters['search'] ?? false) {
+            $query
+                ->where('name', 'like', '%' . request('search') . '%')
+                ->orWhere('location', 'like', '%' . request('search') . '%');
+        }
+    }
 }

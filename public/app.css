@@ -1,0 +1,87 @@
+@import "node_modules/@fortawesome/fontawesome-free/css/all.css";
+
+:root {
+    --bg-color-1: #f6f6f6;
+    --gray: #cccccc;
+    --dark-gray: #767272;
+    --lightblue: lightblue;
+    --red: red;
+}
+
+.display-body {
+    margin: 2rem auto;
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: 10px;
+    width: 98%;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+    cursor: pointer;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.box {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid var(--gray);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.table {
+    width: 100%;
+    color: var(--dark-gray);
+}
+
+.table-header-footer {
+    background-color: var(--lightblue);
+    height: 60px;
+    border-bottom: 1px solid var(--gray);
+}
+
+.header-logo {
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+.black-list {
+    text-decoration: line-through wavy var(--red) 2px;
+}
+
+.table-styling {
+    border: 1px solid var(--gray);
+    border-top: 0px;
+}
+
+.table-row {
+    text-align: center;
+    border-bottom: 1px solid var(--gray);
+}
+
+.table-row:nth-child(even) {
+    background-color: var(--gray);
+}
+
+.table-column {
+    height: 40px;
+    padding: 6px 9px;
+}
+
+.search-bar {
+    width: 30%;
+    padding: 0.5rem;
+    margin: 1rem 0;
+}
+
+.table-footer {
+    background-color: var(--lightblue);
+    height: 60px;
+    border-top: 1px solid var(--gray);
+    width: 100%;
+}

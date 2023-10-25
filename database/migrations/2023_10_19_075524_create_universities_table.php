@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('location');
             $table->string('website');
-            $table->integer('studentCount');
+            $table->integer('student_count');
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
         });

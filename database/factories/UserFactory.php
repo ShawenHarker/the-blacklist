@@ -17,11 +17,13 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'role_id' => fake()->numberBetween(1),	
-            'university_id' => fake()->numberBetween(1, 3),
-            'firstName' => fake()->name(),
-            'lastName' => fake()->name(),
+            'role_id' => fake()->numerify('1'),	
+            'university_id' => fake()->numberBetween(1, 20),
+            'first_name' => fake()->name(),
+            'last_name' => fake()->name(),
             'location' => fake()->address(),
+            'is_blacklisted' => fake()->boolean(),
+            'reason_for_blacklisting' => fake()->text(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

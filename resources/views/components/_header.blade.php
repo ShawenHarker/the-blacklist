@@ -1,16 +1,7 @@
-<style>
-    h1 {
-        font-weight: 900;
-        font-size: 2.5rem;
-    }
-
-    .black-list {
-        text-decoration: line-through red 5px
-    }
-</style>
-
 <div class="flex justify-between p-6 border-b-2">
-    <h1>The <span class="black-list">Blacklisted</span> Students</h1>
+    <x-logo />
+
+    <x-nav-bar />
 
     @if (Route::has('login'))
         <div >
