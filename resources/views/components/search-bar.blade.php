@@ -1,4 +1,4 @@
-<form method="GET" action="#" class="bg-500">
+<form method="GET" action="#">
     <input 
         type="text"
         name="search"
