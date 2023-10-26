@@ -49,7 +49,22 @@
     margin: 1rem 0;
 }
 
-.search-bar {
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group + .form-group {
+    margin-left: 1rem;
+}
+
+.form-lable {
+    display: block;
+    margin: 0.5rem 0;
+    width: 45%;
+}
+
+.input {
     width: 500px;
     padding: 0.5rem;
     margin: 1rem 0;
@@ -62,6 +77,17 @@
     align-self: center;
 }
 
+.button {
+    padding: 0.5rem 1.5rem;
+    border: var(--dark-gray) 1px solid;
+    color: var(--dark-gray);
+}
+
+.form-body {
+    display: flex;
+    justify-content: center;
+    padding: 6px 9px;
+}
 
 .table {
     width: 100%;

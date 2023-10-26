@@ -3,7 +3,7 @@
         type="text"
         name="search"
             placeholder="Search..."
-            class="search-bar"
+            class="input"
             value="{{ request('search') }}"
         >
 </form>

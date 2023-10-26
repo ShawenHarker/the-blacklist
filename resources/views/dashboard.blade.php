@@ -9,13 +9,15 @@
         'Date Updated',
         'Actions'
     ];
+
+    $url = 'dashboard/students/add-new-student';
 ?>
 
 <x-app-layout> 
     <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center mb-4">Dashboard</h2> 
     <h4
     class="font-semibold text-md text-gray-800 leading-tight text-center">All Students</h4>
-    <x-search-add />
+    <x-search-add :url="$url"/>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-8 border-gray-500">
         <x-table-header :header=$studentTableHeader></x-table-header>
         <tboby class="table-body-styling">
