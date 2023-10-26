@@ -43,11 +43,25 @@
     text-decoration: line-through wavy var(--red) 2px;
 }
 
-.search-bar {
+.search-add {
+    display: flex;
     width: 100%;
+    margin: 1rem 0;
+}
+
+.search-bar {
+    width: 500px;
     padding: 0.5rem;
     margin: 1rem 0;
 }
+
+.add-button {
+    margin-left: 1rem;
+    padding: 0.5rem 1.5rem;
+    border: var(--dark-gray) 1px solid;
+    align-self: center;
+}
+
 
 .table {
     width: 100%;
