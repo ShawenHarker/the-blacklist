@@ -63,7 +63,7 @@ class UserController extends Controller
 
             User::create($attributes);
 
-            return redirect('dashboard/students')->with('success', 'You have successfully added a new student!');
+            return redirect('dashboard')->with('success', 'You have successfully added a new student!');
         } else {
             return redirect()->back()->withErrors(['university' => 'The specified university does not exist.']);
         }

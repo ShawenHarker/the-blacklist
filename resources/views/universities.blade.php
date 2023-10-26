@@ -7,12 +7,14 @@
         'Date Created',
         'Date Updated',
         'Actions'
-    ]
+    ];
+
+    $url = 'universities/add-new-university';
 ?>
 
 <x-app-layout>
     <h2 class="font-semibold text-md text-gray-800 leading-tight text-center mb-6">Universities</h2>
-    <x-search-add />
+    <x-search-add :url="$url"/>
     <table class="table">
         <x-table-header :header=$universityTableHeader ></x-table-header>
         <tboby class="table-body-styling">

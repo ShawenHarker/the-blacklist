@@ -2,15 +2,13 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Role;
+use App\Models\University;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
         Role::create([
@@ -21,8 +19,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin',
         ]);
 
-        \App\Models\User::factory(100)->create();
+        User::factory(50)->create();
 
-        \App\Models\University::factory(20)->create();
+        University::create([
+            'name' => 'University Of Cape Town',
+            'location' => 'Rondebosch, Cape Town, 7700, South Africa',
+            'website' => 'https://www.uct.ac.za/',
+            'student_count' => 1000,
+        ]);
     }
 }

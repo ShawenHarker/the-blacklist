@@ -30,6 +30,14 @@ Route::middleware(['auth'])
     ->name('dashboard.student.store');
 
 Route::middleware(['auth'])
+    ->get('dashboard/universities/add-new-university', [UniversityController::class, 'create'])
+    ->name('dashboard.university.create');
+
+Route::middleware(['auth'])
+    ->post('dashboard/universities/add-new-university', [UniversityController::class, 'store'])
+    ->name('dashboard.university.store');
+
+Route::middleware(['auth'])
     ->post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth')->name('logout');
 

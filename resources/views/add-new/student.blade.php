@@ -3,10 +3,10 @@
     <section class="form-body">
         <form action="/dashboard/students/add-new-student" method="POST">
             @csrf
-            <div class="flex ">
+            <div class="flex">
                 <div class="form-group">
                     <label class="form-label"
-                        for="fisrt_name"
+                        for="first_name"
                     >
                         First Name
                     </label>
