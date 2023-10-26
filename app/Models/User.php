@@ -18,12 +18,6 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'location'
-    ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -39,15 +33,13 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
 
     public function university()
     {
         return $this->belongsTo(University::class);
     }
+
+    protected $guarded = [];
 
     public function scopeFilter($query, array $filters)
     {

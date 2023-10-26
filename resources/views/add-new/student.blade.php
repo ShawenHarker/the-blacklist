@@ -2,6 +2,7 @@
     <h2 class="font-semibold text-md text-gray-800 leading-tight text-center mb-6">Add New Student</h2>
     <section class="form-body">
         <form action="/dashboard/students/add-new-student" method="POST">
+            @csrf
             <div class="flex ">
                 <div class="form-group">
                     <label class="form-label"
@@ -91,7 +92,6 @@
                         type="text"
                         name="blacklisted"
                         id="blacklisted"
-                        value="{{ old('blacklisted') }}"
                         required
                     />
                 </div>

@@ -70,6 +70,14 @@
     margin: 1rem 0;
 }
 
+.dropdown {
+    position: relative;
+    top: 0px;
+    width: 500px;
+    padding: 0.5rem;
+    margin: 1rem 0;
+}
+
 .add-button {
     margin-left: 1rem;
     padding: 0.5rem 1.5rem;

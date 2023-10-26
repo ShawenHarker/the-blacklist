@@ -26,12 +26,17 @@ Route::middleware(['auth'])
     ->name('dashboard.student.create');
 
 Route::middleware(['auth'])
-    ->post('dashboard/students/add-new-student', [UserController::class, 'create'])
-    ->name('dashboard.student.create');
+    ->post('dashboard/students/add-new-student', [UserController::class, 'store'])
+    ->name('dashboard.student.store');
 
 Route::middleware(['auth'])
     ->post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth')->name('logout');
+
+
+
+
+
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

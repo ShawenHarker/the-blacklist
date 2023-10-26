@@ -32,7 +32,7 @@
                             {{ $user->university->name }}
                         </x-table-column>
                         <x-table-column>
-                            {{ $user->reason_for_blacklisting }}
+                            No
                         </x-table-column>
                         <x-table-column>
                             {{ $date = $user->created_at->format('d/m/Y') }}
