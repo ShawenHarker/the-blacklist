@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin',
         ]);
 
-        User::factory(50)->create();
+        User::factory(10)->create();
 
         University::create([
             'name' => 'University Of Cape Town',

@@ -8,6 +8,10 @@
     --red: red;
 }
 
+.span-nb {
+    color: var(--red);
+}
+
 .display-body {
     margin: 2rem auto;
     background-color: var(--bg-color);
