@@ -33,8 +33,7 @@
                         {{ $user->location }}
                     </x-table-column>
                     <x-table-column>
-                        This should be a university name
-                        {{-- {{ $user->university->name }} --}}
+                        {{ $user->university->name }}
                     </x-table-column>
                     <x-table-column>
                     @if ($user->is_blacklisted === 1)

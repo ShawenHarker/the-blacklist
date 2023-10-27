@@ -30,8 +30,7 @@
                             {{ $user->location }}
                         </x-table-column>
                         <x-table-column>
-                            This should be a university name
-                            {{-- {{ $user->university->name }} --}}
+                            {{ $user->university->name }}
                         </x-table-column>
                         <x-table-column>
                             {{ $date = $user->created_at->format('d/m/Y') }}
