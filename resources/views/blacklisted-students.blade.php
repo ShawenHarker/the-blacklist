@@ -18,7 +18,7 @@
         <x-table-header :header=$studentTableHeader></x-table-header>
         <tboby class="table-body-styling">
             @foreach ($users as $user)
-                @if ($user->is_blacklisted === 1)
+                @if ($user->is_blacklisted === 1 && $user->role_id !== 2)
                     <tr class="table-row">
                         <x-table-column>
                             {{ $user->first_name }}

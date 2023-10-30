@@ -22,36 +22,38 @@
         <x-table-header :header=$studentTableHeader></x-table-header>
         <tboby class="table-body-styling">
             @foreach ($users as $user)
-                <tr class="table-row">
-                    <x-table-column>
-                        {{ $user->first_name }}
-                    </x-table-column>
-                    <x-table-column>
-                        {{ $user->last_name}}
-                    </x-table-column>
-                    <x-table-column>
-                        {{ $user->location }}
-                    </x-table-column>
-                    <x-table-column>
-                        {{ $user->university->name }}
-                    </x-table-column>
-                    <x-table-column>
-                    @if ($user->is_blacklisted === 1)
-                        Yes
-                    @else
-                        No
-                    @endif
-                    </x-table-column>
-                    <x-table-column>
-                        {{ $date = $user->created_at->format('d/m/Y') }}
-                    </x-table-column>
-                    <x-table-column>
-                        {{ $date = $user->updated_at->format('d/m/Y') }}
-                    </x-table-column>
-                    <x-table-column>
-                        <x-action-button-table></x-action-button-table>
-                    </x-table-column>
-                </tr>
+                @if ($user->role_id === 1)
+                    <tr class="table-row">
+                        <x-table-column>
+                            {{ $user->first_name }}
+                        </x-table-column>
+                        <x-table-column>
+                            {{ $user->last_name}}
+                        </x-table-column>
+                        <x-table-column>
+                            {{ $user->location }}
+                        </x-table-column>
+                        <x-table-column>
+                            {{ $user->university->name }}
+                        </x-table-column>
+                        <x-table-column>
+                        @if ($user->is_blacklisted === 1)
+                            Yes
+                        @else
+                            No
+                        @endif
+                        </x-table-column>
+                        <x-table-column>
+                            {{ $date = $user->created_at->format('d/m/Y') }}
+                        </x-table-column>
+                        <x-table-column>
+                            {{ $date = $user->updated_at->format('d/m/Y') }}
+                        </x-table-column>
+                        <x-table-column>
+                            <x-action-button-table></x-action-button-table>
+                        </x-table-column>
+                    </tr>
+                @endif
             @endforeach
         </tboby>
         <x-table-footer :page=$users ></x-table-footer>

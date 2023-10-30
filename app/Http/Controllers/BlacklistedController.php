@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class BlacklistedController extends Controller
 {
+    public function index()
+    {
+        $users = User::latest()->where('is_blacklisted', 1)->paginate(10)->withQueryString();
+        return view('blacklisted-students', [
+            'users' => $users
+        ]);
+    }
+
     public function create()
     {
         return view('add-new.blacklist-student');
@@ -19,6 +27,7 @@ class BlacklistedController extends Controller
             'first_name' => 'required|string|max:100',
             'last_name' => 'required|string|max:100',
             'email' => 'required|email',
+            // The three values above should be created to return a 'user_id' => 'required|integer',
             'reason' => 'required|string',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'mp3' => 'file|mimes:mp3|max:2048',

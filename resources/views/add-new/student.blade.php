@@ -5,11 +5,7 @@
             @csrf
             <div class="flex">
                 <div class="form-group">
-                    <label class="form-label"
-                        for="first_name"
-                    >
-                        First Name
-                    </label>
+                    <x-input-label for="first_name">First Name</x-input-label>
                     <input 
                         class="input"
                         type="text"
@@ -20,11 +16,7 @@
                     />
                 </div>
                 <div class="form-group">
-                    <label class="form-label"
-                        for="last_name"
-                    >
-                        Last Name
-                    </label>
+                    <x-input-label for="last_name">Last Name</x-input-label>
                     <input 
                         class="input"
                         type="text"
@@ -35,11 +27,7 @@
                     />
                 </div>
                 <div class="form-group">
-                    <label class="form-label"
-                        for="email"
-                    >
-                        Email
-                    </label>
+                    <x-input-label for="email">Email</x-input-label>
                     <input 
                         class="input"
                         type="email"
@@ -52,11 +40,7 @@
             </div>
             <div class="flex ">
                 <div class="form-group">
-                    <label class="form-label"
-                        for="location"
-                    >
-                        Location
-                    </label>
+                    <x-input-label for="location">Location</x-input-label>
                     <input 
                         class="input"
                         type="text"
@@ -67,11 +51,7 @@
                     />
                 </div>
                 <div class="form-group">
-                    <label class="form-label"
-                        for="university"
-                    >
-                        University
-                    </label>
+                    <x-input-label for="university">University</x-input-label>
                     <input 
                         class="input"
                         type="text"
@@ -82,11 +62,7 @@
                     />
                 </div>
                 <div class="form-group">
-                    <label class="form-label"
-                        for="blacklisted"
-                    >
-                        Blacklisted
-                    </label>
+                    <x-input-label for="blacklisted">BlackListed</x-input-label>
                     <input 
                         class="input"
                         type="text"
@@ -97,11 +73,7 @@
                 </div>
             </div>
             <div>
-                <button type="submit"
-                    class="button"
-                >
-                    Add Student
-                </button>
+                <x-primary-button>Add Student</x-primary-button>
             </div>
         </form>
     </section>

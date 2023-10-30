@@ -3,7 +3,7 @@
     <section class="form-body">
         <form action="/dashboard/blacklisted-students/add-new-blacklist-student" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="flex">
+            {{-- <div class="flex">
                 <div class="form-group">
                     <label class="form-label"
                         for="first_name"
@@ -48,7 +48,10 @@
                         required
                     />
                 </div>
-            </div>
+            </div> --}}
+            
+
+            {{-- dropdown that will bring me all the students and I want to select an student id from (George Many - jigumany ) --}}
             <div class="form-group">
                 <label class="form-label"
                     for="reason"
@@ -109,11 +112,7 @@
                 </div>
             </div>
             <div>
-                <button type="submit"
-                    class="button"
-                >
-                    Blacklist Student
-                </button>
+                <x-primary-button>Blacklist Student</x-primary-button>
             </div>
         </form>
     </section>

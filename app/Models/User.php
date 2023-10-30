@@ -28,6 +28,11 @@ class User extends Authenticatable
         return $this->belongsTo(Blacklisted::class);
     }
 
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, fn ($query, $search) =>
@@ -35,7 +40,6 @@ class User extends Authenticatable
                 ->where('first_name', 'like', '%' . $search . '%')
                 ->orWhere('last_name', 'like', '%' . $search . '%')
                 ->orWhere('location', 'like', '%' . $search . '%')
-                ->orWhere('reason_for_blacklisting', 'like', '%' . $search . '%')
         );
         $query->when($filters['university'] ?? false, fn($query, $university) => 
             $query

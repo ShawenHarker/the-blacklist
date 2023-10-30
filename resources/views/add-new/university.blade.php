@@ -5,11 +5,7 @@
             @csrf
             <div class="flex">
                 <div class="form-group">
-                    <label class="form-label"
-                        for="name"
-                    >
-                        Name
-                    </label>
+                    <x-input-label for="first_name">Name</x-input-label>
                     <input 
                         class="input"
                         type="text"
@@ -20,11 +16,7 @@
                     />
                 </div>
                 <div class="form-group">
-                    <label class="form-label"
-                        for="location"
-                    >
-                        Location
-                    </label>
+                    <x-input-label for="first_name">Location</x-input-label>
                     <input 
                         class="input"
                         type="text"
@@ -37,11 +29,7 @@
             </div>
             <div class="flex">
                 <div class="form-group">
-                    <label class="form-label"
-                        for="website"
-                    >
-                        Website
-                    </label>
+                    <x-input-label for="first_name">Website</x-input-label>
                     <input 
                         class="input"
                         type="url"
@@ -52,11 +40,7 @@
                     />
                 </div>
                 <div class="form-group">
-                    <label class="form-label"
-                        for="student_count"
-                    >
-                        Student Count
-                    </label>
+                    <x-input-label for="first_name">Student Count</x-input-label>
                     <input 
                         class="input"
                         type="number"
@@ -68,11 +52,7 @@
                 </div>
             </div>
             <div>
-                <button type="submit"
-                    class="button"
-                >
-                    Add University
-                </button>
+                <x-primary-button>Add University</x-primary-button>
             </div>
         </form>
     </section>
