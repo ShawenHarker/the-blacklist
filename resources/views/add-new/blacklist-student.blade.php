@@ -3,61 +3,20 @@
     <section class="form-body">
         <form action="/dashboard/blacklisted-students/add-new-blacklist-student" method="POST" enctype="multipart/form-data">
             @csrf
-            {{-- <div class="flex">
-                <div class="form-group">
-                    <label class="form-label"
-                        for="first_name"
-                    >
-                        First Name
-                    </label>
-                    <input 
-                        class="input"
-                        type="text"
-                        name="first_name"
-                        id="first_name"
-                        value="{{ old('first_name') }}"
-                        required
-                    />
-                </div>
-                <div class="form-group">
-                    <label class="form-label"
-                        for="last_name"
-                    >
-                        Last Name
-                    </label>
-                    <input 
-                        class="input"
-                        type="text"
-                        name="last_name"
-                        id="last_name"
-                        value="{{ old('last_name') }}"
-                        required
-                    />
-                </div>
-                <div class="form-group">
-                    <label class="form-label"
-                        for="email"
-                    >
-                        Email
-                    </label>
-                    <input 
-                        class="input"
-                        type="email"
-                        name="email"
-                        id="email"
-                        required
-                    />
-                </div>
-            </div> --}}
-            
-
-            {{-- dropdown that will bring me all the students and I want to select an student id from (George Many - jigumany ) --}}
+            <x-input-label for="user_id">Select Student</x-input-label>
+            <select
+                class="w-full mt-4 mb-4"
+                name="user_id"
+            >
+                <option>Select Student</option>
+                @foreach ($users as $user)
+                    <option value="{{ $user->id }}">
+                        {{ $user->first_name . ' ' . $user->last_name . ' ' . '-' . ' ' . $user->email }}
+                    </option>
+                @endforeach
+            </select>
             <div class="form-group">
-                <label class="form-label"
-                    for="reason"
-                >
-                    Reason For Blacklisting
-                </label>
+                <x-input-label for="reason">Reason For Blacklisting</x-input-label>
                 <input 
                     class="w-full mt-4 mb-4"
                     type="text"
@@ -72,39 +31,27 @@
             </h3>
             <div class="flex">
                 <div class="form-group">
-                    <label class="form-label"
-                        for="image"
-                    >
-                        Image
-                    </label>
+                    <x-input-label for="image">Add Image</x-input-label>
                     <input 
-                        class="input"
+                        class="mt-4 mb-6"
                         type="file"
                         name="image"
                         id="image"
                     />
                 </div>
                 <div class="form-group">
-                    <label class="form-label"
-                        for="mp3"
-                    >
-                        Mp3
-                    </label>
+                    <x-input-label for="mp3">Add Mp3</x-input-label>
                     <input 
-                        class="input"
+                        class="mt-4 mb-6"
                         type="file"
                         name="mp3"
                         id="mp3"
                     />
                 </div>
                 <div class="form-group">
-                    <label class="form-label"
-                        for="video"
-                    >
-                        Video
-                    </label>
+                    <x-input-label for="video">Add Video</x-input-label>
                     <input 
-                        class="input"
+                        class="mt-4 mb-6"
                         type="file"
                         name="video"
                         id="video"

@@ -51,25 +51,28 @@
                     />
                 </div>
                 <div class="form-group">
-                    <x-input-label for="university">University</x-input-label>
-                    <input 
+                    <x-input-label for="university_id">University</x-input-label>
+                    <select
                         class="input"
-                        type="text"
-                        name="university"
-                        id="university"
-                        value="{{ old('university') }}"
-                        required
-                    />
+                        name="university_id"
+                    >
+                        <option>Select University</option>
+                        @foreach ($universities as $university)
+                            <option value="{{ $university->id }}">
+                                {{ $university->name }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
-                    <x-input-label for="blacklisted">BlackListed</x-input-label>
-                    <input 
+                    <x-input-label for="is_blacklisted">BlackListed</x-input-label>
+                    <select
                         class="input"
-                        type="text"
-                        name="blacklisted"
-                        id="blacklisted"
-                        required
-                    />
+                        name="is_blacklisted"
+                    >
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
                 </div>
             </div>
             <div>

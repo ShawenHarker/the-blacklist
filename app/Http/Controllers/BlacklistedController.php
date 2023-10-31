@@ -18,16 +18,16 @@ class BlacklistedController extends Controller
 
     public function create()
     {
-        return view('add-new.blacklist-student');
+        $users = User::all()->where('is_blacklisted', 0)->where('role_id', 1);
+        return view('add-new.blacklist-student', [
+            'users' =>  $users
+        ]);
     }
 
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'first_name' => 'required|string|max:100',
-            'last_name' => 'required|string|max:100',
-            'email' => 'required|email',
-            // The three values above should be created to return a 'user_id' => 'required|integer',
+            'user_id' => 'required|integer',
             'reason' => 'required|string',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'mp3' => 'file|mimes:mp3|max:2048',
@@ -36,39 +36,29 @@ class BlacklistedController extends Controller
 
         $filePaths = [];
 
-        if ($request->hasFile('image')) {
-            $filePaths['image'] = $request->file('image')->store('uploads/images', 'public');
+        switch ($request->hasFile) {
+            case 'image':
+                $filePaths['image'] = $request->file('image')->store('uploads/images', 'public');
+                break;
+            case 'mp3':
+                $filePaths['mp3'] = $request->file('mp3')->store('uploads/mp3', 'public');
+                break;
+            case 'video':
+                $filePaths['video'] = $request->file('video')->store('uploads/videos', 'public');
+                break;
         }
 
-        if ($request->hasFile('mp3')) {
-            $filePaths['mp3'] = $request->file('mp3')->store('uploads/mp3', 'public');
-        }
+        $user = User::find($attributes['user_id']);
 
-        if ($request->hasFile('video')) {
-            $filePaths['video'] = $request->file('video')->store('uploads/videos', 'public');
-        }
-
-        $userFirst = $attributes['first_name'];
-        $userLast = $attributes['last_name'];
-        $userEmail = $attributes['email'];
-
-        $user = User::where(['first_name' => $userFirst, 'last_name' => $userLast, 'email' => $userEmail])->first();
-
-        if ($user) {
-            $attributes['user_id'] = $user->id;
-
-            unset($attributes['first_name']);
-            unset($attributes['last_name']);
-            unset($attributes['email']);
-
+        if (!$user) {
+            return redirect()->back()->withErrors(['user' => 'The specified student does not exist.']);
+        } else {
             $attributes = array_merge($attributes, $filePaths);
 
             Blacklisted::create($attributes);
             $user->update(['is_blacklisted' => 1]);
 
             return redirect('dashboard/blacklisted-students')->with('success', 'You have successfully added a new student!');
-        } else {
-            return redirect()->back()->withErrors(['user' => 'The specified student does not exist.']);
         }
     }
 

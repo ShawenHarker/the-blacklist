@@ -18,7 +18,10 @@ class StudentController extends Controller
 
     public function create()
     {
-        return view('add-new.student');
+        $universities = University::all();
+        return view('add-new.student', [
+            'universities' => $universities,
+        ]);
     }
 
     public function store(Request $request)
@@ -27,27 +30,16 @@ class StudentController extends Controller
             'first_name' => 'required|max:100',
             'last_name' => 'required|max:100',
             'email' => 'required|email|unique:users,email',
-            'location' => 'required',
-            'university' => 'required',
-            'blacklisted' => 'required',
+            'location' => 'required|max:255',
+            'university_id' => 'required|integer',
+            'is_blacklisted' => 'required|integer',
         ]);
 
-        $universityName = $attributes['university'];
-        $university = University::where('name', $universityName)->first();
-        $attributes['is_blacklisted'] = ($attributes['blacklisted'] === 'Yes') ? 1 : 0;
-
-        if ($university) {
-
-            unset($attributes['university']);
-            unset($attributes['blacklisted']);
-
-            $attributes['university_id'] = $university->id;
-
-            User::create($attributes);
-
-            return redirect('dashboard')->with('success', 'You have successfully added a new student!');
-        } else {
+        if (!$attributes) {
             return redirect()->back()->withErrors(['university' => 'The specified university does not exist.']);
+        } else {
+            User::create($attributes);
+            return redirect('dashboard')->with('success', 'You have successfully added a new student!');
         }
     }
 }
