@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class University extends Model
+class School extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function users ()
+    public function studentTeacher ()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(StudentTeacher::class);
     }
 
     public function scopeFilter($query, array $filters)

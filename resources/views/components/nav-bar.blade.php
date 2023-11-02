@@ -6,15 +6,15 @@
         ],
         [
             'name' => 'Students',
-            'url' => 'dashboard/students',
+            'url' => 'dashboard/student-teachers',
         ],
         [
-            'name' => 'Universities',
-            'url' => 'dashboard/universities',
+            'name' => 'Schools',
+            'url' => 'dashboard/schools',
         ],
         [
             'name' => 'BlackListed Students',
-            'url' => 'dashboard/blacklisted-students',
+            'url' => 'dashboard/blacklisted-student-teachers',
         ]
     ]
 ?>

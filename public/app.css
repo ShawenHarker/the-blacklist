@@ -74,14 +74,6 @@
     margin: 1rem 0;
 }
 
-.dropdown {
-    position: relative;
-    top: 0px;
-    width: 500px;
-    padding: 0.5rem;
-    margin: 1rem 0;
-}
-
 .add-button {
     margin-left: 1rem;
     padding: 0.5rem 1.5rem;
@@ -97,7 +89,9 @@
 
 .form-body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 6px 9px;
 }
 
@@ -136,4 +130,18 @@
     height: 60px;
     border-top: 1px solid var(--gray);
     width: 100%;
+}
+
+.dropdown-button {
+    position: relative;
+}
+
+.dropdown-options {
+    position: absolute;
+    z-index: 99;
+    background-color: var(--bg-color-1);
+    padding: 0.5rem;
+    top: -15%;
+    border-radius: 16px;
+    border: var(--gray) 1px solid;
 }

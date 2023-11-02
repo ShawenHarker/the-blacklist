@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\BlacklistedController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\StudentTeacherController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,25 +10,43 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/', [UserController::class, 'index'])
     ->name('dashboard');
 
-    //Users
-    Route::get('students', [StudentController::class, 'index'])
+    //Active Students
+    Route::get('student-teachers', [StudentTeacherController::class, 'index'])
         ->name('dashboard.student');
 
-    Route::get('students/add-new-student', [StudentController::class, 'create'])
+    Route::get('students/add-new-student', [StudentTeacherController::class, 'create'])
         ->name('dashboard.student.create');
 
-    Route::post('students/add-new-student', [StudentController::class, 'store'])
+    Route::post('students/add-new-student', [StudentTeacherController::class, 'store'])
         ->name('dashboard.student.store');
 
-    //Universities
-    Route::get('universities', [UniversityController::class, 'index'])
-        ->name('dashboard.universities');
+    Route::get('students/view-student/{user:id}', [StudentTeacherController::class, 'show'])
+        ->name('dashboard.student.show');
 
-    Route::get('universities/add-new-university', [UniversityController::class, 'create'])
-        ->name('dashboard.university.create');
+    Route::get('students/edit-student/{user:id}', [StudentTeacherController::class, 'edit'])
+        ->name('dashboard.student.edit');
 
-    Route::post('universities/add-new-university', [UniversityController::class, 'store'])
-        ->name('dashboard.university.store');
+    //schools
+    Route::get('schools', [SchoolController::class, 'index'])
+        ->name('school.index');
+
+    Route::get('schools/add-new-school', [SchoolController::class, 'create'])
+        ->name('school.create');
+
+    Route::post('schools/add-new-school', [SchoolController::class, 'store'])
+        ->name('school.store');
+
+    Route::get('schools/view-school/{school:id}', [SchoolController::class, 'show'])
+        ->name('school.show');
+
+    Route::get('schools/edit-school/{school:id}', [SchoolController::class, 'edit'])
+        ->name('school.edit');
+
+    Route::post('schools/update-school/{school:id}', [SchoolController::class, 'update'])
+        ->name('school.update');
+
+    Route::delete('schools/delete-school/{school:id}', [SchoolController::class, 'destroy'])
+        ->name('school.destroy');
 
     //Blacklisted
     Route::get('blacklisted-students', [BlacklistedController::class, 'index'])

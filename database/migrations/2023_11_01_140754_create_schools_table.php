@@ -6,21 +6,26 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('universities', function (Blueprint $table) {
+        Schema::create('schools', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('location');
             $table->string('website');
-            $table->integer('student_count');
-            $table->date('created_at')->nullable();
-            $table->date('updated_at')->nullable();
+            $table->date('created_at')->now();
+            $table->date('updated_at')->now();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('universities');
+        Schema::dropIfExists('schools');
     }
 };

@@ -18,19 +18,11 @@ class User extends Authenticatable
 
     protected $guarded = [];
 
-    public function university()
-    {
-        return $this->belongsTo(University::class);
-    }
+    
 
     public function blacklisted()
     {
         return $this->belongsTo(Blacklisted::class);
-    }
-
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
     }
 
     public function scopeFilter($query, array $filters)
@@ -41,9 +33,9 @@ class User extends Authenticatable
                 ->orWhere('last_name', 'like', '%' . $search . '%')
                 ->orWhere('location', 'like', '%' . $search . '%')
         );
-        $query->when($filters['university'] ?? false, fn($query, $university) => 
+        $query->when($filters['school'] ?? false, fn($query, $school) => 
             $query
-                ->whereHas('university', fn($query) =>
-                    $query->where('name', $university)));
+                ->whereHas('school', fn($query) =>
+                    $query->where('name', $school)));
     }
 }

@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\StudentTeacher;
 
 class UserController extends Controller
 {
     public function index()
     {
 
-        $users = User::latest()->where('role_id', 1)
-        ->filter(request(['search', 'university']))
-        ->paginate(10)->withQueryString();
+        $studentTeachers = StudentTeacher::latest()
+        ->paginate(10);
 
         return view('dashboard', [
-            'users' => $users
+            'studentTeachers' => $studentTeachers
         ]);
     }
 }

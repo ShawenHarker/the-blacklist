@@ -51,15 +51,15 @@
                     />
                 </div>
                 <div class="form-group">
-                    <x-input-label for="university_id">University</x-input-label>
+                    <x-input-label for="school_id">School</x-input-label>
                     <select
                         class="input"
-                        name="university_id"
+                        name="school_id"
                     >
-                        <option>Select University</option>
-                        @foreach ($universities as $university)
-                            <option value="{{ $university->id }}">
-                                {{ $university->name }}
+                        <option>Select School</option>
+                        @foreach ($universities as $school)
+                            <option value="{{ $school->id }}">
+                                {{ $school->name }}
                             </option>
                         @endforeach
                     </select>

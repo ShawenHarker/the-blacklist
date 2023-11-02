@@ -1,5 +1,5 @@
 <?php
-    $studentTableHeader = [
+    $studentTeachersTableHeader = [
         'First Name',
         'Last Name',
         'Location',
@@ -9,47 +9,48 @@
         'Actions'
     ];
 
-    $url = 'blacklisted-students/add-new-blacklist-student';
-    $view = 'dashboard/students/view-student/{$user}';
-    $edit = 'dashboard/students/edit-student/{$user}';
+    $url = 'students/add-new-student';
+    $view = 'dashboard/students/view-student/';
+    $edit = 'dashboard/students/edit-student/';
 ?>
 
-<x-app-layout> <h2 class="font-semibold text-md text-gray-800 leading-tight text-center mb-6">Blacklisted Students</h2>
+<x-app-layout>
+    <h2 class="font-semibold text-md text-gray-800 leading-tight text-center mb-6">Active Students</h2>
     <x-search-add :url="$url"/>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-8 border-gray-500">
-        <x-table-header :header=$studentTableHeader></x-table-header>
+        <x-table-header :header=$studentTeachersTableHeader ></x-table-header>
         <tboby class="table-body-styling">
-            @foreach ($users as $user)
-                @if ($user->is_blacklisted === 1 && $user->role_id !== 2)
+            @foreach ($studentTeachers as $student)
+                @if ($student->is_blacklisted === 0 && $student->role_id !== 2)
                     <tr class="table-row">
                         <x-table-column>
-                            {{ $user->first_name }}
+                            {{ $student->first_name }}
                         </x-table-column>
                         <x-table-column>
-                            {{ $user->last_name}}
+                            {{ $student->last_name}}
                         </x-table-column>
                         <x-table-column>
-                            {{ $user->location }}
+                            {{ $student->location }}
                         </x-table-column>
                         <x-table-column>
-                            {{ $user->school->name }}
+                            {{ $student->school->name }}
                         </x-table-column>
                         <x-table-column>
-                            {{ $date = $user->created_at->format('d/m/Y') }}
+                            {{ $date = $student->created_at->format('d/m/Y') }}
                         </x-table-column>
                         <x-table-column>
-                            {{ $date = $user->updated_at->format('d/m/Y') }}
+                            {{ $date = $student->updated_at->format('d/m/Y') }}
                         </x-table-column>
                         <x-table-column>
                             <x-action-button-table
-                                :viewRoute=$view
-                                :updateRoute=$edit
-                            ></x-action-button-table>
+                            :viewRoute="$view . $student->id"
+                            :updateRoute="$edit . $student->id"
+                        ></x-action-button-table>
                         </x-table-column>
                     </tr>
                 @endif
             @endforeach
         </tboby>
-        <x-table-footer :page=$users ></x-table-footer>
+        <x-table-footer :page=$studentTeachers ></x-table-footer>
     </table>
 </x-app-layout>
