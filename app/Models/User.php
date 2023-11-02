@@ -2,51 +2,27 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'location'
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    protected $guarded = [];
 
-    public function university()
+    
+
+    public function blacklisted()
     {
-        return $this->belongsTo(University::class);
+        return $this->belongsTo(Blacklisted::class);
     }
 
     public function scopeFilter($query, array $filters)
@@ -56,11 +32,10 @@ class User extends Authenticatable
                 ->where('first_name', 'like', '%' . $search . '%')
                 ->orWhere('last_name', 'like', '%' . $search . '%')
                 ->orWhere('location', 'like', '%' . $search . '%')
-                ->orWhere('reason_for_blacklisting', 'like', '%' . $search . '%')
         );
-        $query->when($filters['university'] ?? false, fn($query, $university) => 
+        $query->when($filters['school'] ?? false, fn($query, $school) => 
             $query
-                ->whereHas('university', fn($query) =>
-                    $query->where('name', $university)));
+                ->whereHas('school', fn($query) =>
+                    $query->where('name', $school)));
     }
 }
