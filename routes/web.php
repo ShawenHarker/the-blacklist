@@ -51,10 +51,10 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
         ->name('school.destroy');
 
     //Blacklisted
-    Route::get('blacklisted-students/add-new-blacklist-student', [BlacklistedController::class, 'create'])
+    Route::get('add-new-blacklist-student', [BlacklistedController::class, 'create'])
         ->name('blacklist.create');
 
-    Route::post('blacklisted-students/add-new-blacklist-student', [BlacklistedController::class, 'store'])
+    Route::post('add-new-blacklist-student', [BlacklistedController::class, 'store'])
         ->name('blacklist.store');
 });
 
