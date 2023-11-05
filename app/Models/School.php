@@ -11,9 +11,8 @@ class School extends Model
 
     protected $guarded = [];
 
-    public function studentTeacher ()
-    {
-        return $this->hasMany(StudentTeacher::class);
+    public function blacklisted(){
+        return $this->hasMany(Blacklisted::class);
     }
 
     public function scopeFilter($query, array $filters)

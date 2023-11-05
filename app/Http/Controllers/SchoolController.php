@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blacklisted;
 use App\Models\School;
 use App\Models\StudentTeacher;
 use Illuminate\Http\Request;
@@ -40,11 +41,16 @@ class SchoolController extends Controller
 
     public function show(School $school)
     {
-        $studentTeachers = StudentTeacher::latest()->paginate(10);
+        $students = StudentTeacher::latest()
+        ->whereIn('id', $school->blacklisted
+        ->pluck('student_teacher_id'))
+        ->paginate(10);
+
+        
 
         return view('schools.show', [
             'school' => $school,
-            'studentTeachers' => $studentTeachers,
+            'students' => $students
         ]);
     }
 

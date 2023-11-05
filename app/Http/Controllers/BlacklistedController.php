@@ -3,31 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blacklisted;
-use App\Models\User;
+use App\Models\School;
+use App\Models\StudentTeacher;
 use Illuminate\Http\Request;
 
 class BlacklistedController extends Controller
 {
-    public function index()
-    {
-        $users = User::latest()->where('is_blacklisted', 1)->paginate(10)->withQueryString();
-        return view('blacklisted-students', [
-            'users' => $users
-        ]);
-    }
-
     public function create()
     {
-        $users = User::all()->where('is_blacklisted', 0)->where('role_id', 1);
-        return view('add-new.blacklist-student', [
-            'users' =>  $users
+        $studentTeachers = StudentTeacher::all();
+        $schools = School::all();
+
+        return view('blacklist.create', [
+            'studentTeachers' =>  $studentTeachers,
+            'schools' =>  $schools
         ]);
     }
 
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'user_id' => 'required|integer',
+            'student_teacher_id' => 'required|integer',
+            'school_id' => 'required|integer',
             'reason' => 'required|string',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'mp3' => 'file|mimes:mp3|max:2048',
@@ -48,18 +45,8 @@ class BlacklistedController extends Controller
                 break;
         }
 
-        $user = User::find($attributes['user_id']);
-
-        if (!$user) {
-            return redirect()->back()->withErrors(['user' => 'The specified student does not exist.']);
-        } else {
-            $attributes = array_merge($attributes, $filePaths);
-
-            Blacklisted::create($attributes);
-            $user->update(['is_blacklisted' => 1]);
-
-            return redirect('dashboard/blacklisted-students')->with('success', 'You have successfully added a new student!');
-        }
+        $attributes = array_merge($attributes, $filePaths);
+        Blacklisted::create($attributes);
+        return redirect('dashboard')->with('success', 'You have successfully added a new student!');
     }
-
 }

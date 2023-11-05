@@ -3,15 +3,27 @@
     <section class="form-body">
         <form action="/dashboard/blacklisted-students/add-new-blacklist-student" method="POST" enctype="multipart/form-data">
             @csrf
-            <x-input-label for="user_id">Select Student</x-input-label>
+            <x-input-label for="student_teacher_id">Select Student</x-input-label>
             <select
                 class="w-full mt-4 mb-4"
-                name="user_id"
+                name="student_teacher_id"
             >
                 <option>Select Student</option>
-                @foreach ($users as $user)
-                    <option value="{{ $user->id }}">
-                        {{ $user->first_name . ' ' . $user->last_name . ' ' . '-' . ' ' . $user->email }}
+                @foreach ($studentTeachers as $studentTeacher)
+                    <option value="{{ $studentTeacher->id }}">
+                        {{ $studentTeacher->first_name . ' ' . $studentTeacher->last_name . ' ' . '-' . ' ' . $studentTeacher->location }}
+                    </option>
+                @endforeach
+            </select>
+            <x-input-label for="school_id">Select School</x-input-label>
+            <select
+                class="w-full mt-4 mb-4"
+                name="school_id"
+            >
+                <option>Select School</option>
+                @foreach ($schools as $school)
+                    <option value="{{ $school->id }}">
+                        {{ $school->name }}
                     </option>
                 @endforeach
             </select>

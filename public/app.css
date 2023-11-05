@@ -134,6 +134,7 @@
 
 .dropdown-button {
     position: relative;
+    width: 50px;
 }
 
 .dropdown-options {

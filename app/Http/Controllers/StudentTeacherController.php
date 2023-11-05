@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\School;
 use App\Models\StudentTeacher;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,6 @@ class StudentTeacherController extends Controller
     public function index()
     {
         $studentTeachers = StudentTeacher::latest()
-            ->where('is_blacklisted', 0)
             ->paginate(10)
             ->withQueryString();
 
@@ -22,10 +22,7 @@ class StudentTeacherController extends Controller
 
     public function create()
     {
-        $studentTeachers = StudentTeacher::all();
-        return view('student-teachers.create', [
-            'studentTeachers' => $studentTeachers,
-        ]);
+        return view('student-teachers.create');
     }
 
     public function store(Request $request)
@@ -34,29 +31,42 @@ class StudentTeacherController extends Controller
             'first_name' => 'required|max:100',
             'last_name' => 'required|max:100',
             'location' => 'required|max:255',
-            'school_id' => 'required|integer',
-            'is_blacklisted' => 'required|integer',
         ]);
 
         if (!$attributes) {
             return redirect()->back()->withErrors(['school' => 'The specified school does not exist.']);
         } else {
             StudentTeacher::create($attributes);
-            return redirect('student-teachers.index')->with('success', 'You have successfully added a new student!');
+            return redirect('/dashboard')->with('success', 'You have successfully added a new student!');
         }
     }
 
-    public function show(StudentTeacher $studentTeacher)
-    {
+    public function show(StudentTeacher $studentTeacher){
+
+        $schools = School::latest()
+            ->whereIn('id', $studentTeacher->blacklisted->pluck('school_id'))
+                ->paginate(10);
+
+        $blacklisting = $studentTeacher->blacklisted
+            ->all();
+
         return view('student-teachers.show', [
             'studentTeacher' => $studentTeacher,
+            'schools' => $schools,
+            'blacklisting' => $blacklisting,
         ]);
     }
 
     public function edit(StudentTeacher $studentTeacher)
     {
-        return view('update.student', [
+        $schools = School::latest()
+            ->whereIn('id', $studentTeacher->blacklisted
+            ->pluck('school_id'))
+            ->paginate(10);
+
+        return view('student-teachers.edit', [
             'studentTeacher' => $studentTeacher,
+            'schools' => $schools
         ]);
     }
 
@@ -65,17 +75,17 @@ class StudentTeacherController extends Controller
         $attributes = $request->validate([
             'first_name' => 'required|max:100',
             'last_name' => 'required|max:100',
-            'email' => 'required|email|unique:studentTeachers,email,' . $studentTeacher->id,
             'location' => 'required|max:255',
-            'school_id' => 'required|integer',
-            'is_blacklisted' => 'required|integer',
         ]);
 
-        if (!$attributes) {
-            return redirect()->back()->withErrors(['school' => 'The specified school does not exist.']);
-        } else {
-            $studentTeacher->update($attributes);
-            return redirect('dashboard')->with('success', 'You have successfully updated a student!');
-        }
+        $studentTeacher->update($attributes);
+        return redirect('dashboard')->with('success', 'You have successfully updated a student!');
+    }
+
+    public function destroy(StudentTeacher $studentTeacher)
+    {
+        $studentTeacher->delete();
+
+        return response(null, 204);
     }
 }
