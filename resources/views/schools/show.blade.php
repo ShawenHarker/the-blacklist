@@ -3,7 +3,6 @@
         'First Name',
         'Last Name',
         'Location',
-        'Actions'
     ];
 
     $view = 'dashboard/students/view-student/';
@@ -64,12 +63,6 @@
                         </x-table-column>
                         <x-table-column>
                             {{ $student->location }}
-                        </x-table-column>
-                        <x-table-column>
-                            <x-action-button-table
-                                :viewRoute="$view . $student->id"
-                                :updateRoute="$edit . $student->id"
-                            ></x-action-button-table>
                         </x-table-column>
                     </tr>
                 @empty
