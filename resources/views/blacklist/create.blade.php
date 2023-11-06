@@ -1,7 +1,7 @@
 <x-app-layout>
     <h2 class="font-semibold text-md text-gray-800 leading-tight text-center mb-6">Blacklist A Student</h2>
     <section class="form-body">
-        <form action="/dashboard/blacklisted-students/add-new-blacklist-student" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('blacklist.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <x-input-label for="student_teacher_id">Select Student</x-input-label>
             <select

@@ -37,7 +37,7 @@ class StudentTeacherController extends Controller
             return redirect()->back()->withErrors(['school' => 'The specified school does not exist.']);
         } else {
             StudentTeacher::create($attributes);
-            return redirect('/dashboard')->with('success', 'You have successfully added a new student!');
+            return redirect(route('dashboard'))->with('success', 'You have successfully added a new student!');
         }
     }
 
@@ -79,7 +79,7 @@ class StudentTeacherController extends Controller
         ]);
 
         $studentTeacher->update($attributes);
-        return redirect('dashboard')->with('success', 'You have successfully updated a student!');
+        return redirect(route('dashboard'))->with('success', 'You have successfully updated a student!');
     }
 
     public function destroy(StudentTeacher $studentTeacher)

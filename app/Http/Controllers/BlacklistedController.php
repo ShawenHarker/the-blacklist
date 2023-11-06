@@ -47,6 +47,6 @@ class BlacklistedController extends Controller
 
         $attributes = array_merge($attributes, $filePaths);
         Blacklisted::create($attributes);
-        return redirect('dashboard')->with('success', 'You have successfully added a new student!');
+        return redirect(route('dashboard'))->with('success', 'You have successfully added a new student!');
     }
 }
