@@ -17,7 +17,11 @@
     <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center mb-4">Dashboard</h2> 
     <h4
     class="font-semibold text-md text-gray-800 leading-tight text-center">All Student Teachers</h4>
-    </table><x-search-add :url=$url/>
+    <div class="flex">
+        <x-search-add :url=$url/>
+        <x-csv-button />
+    </div>
+    </table>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-8 border-gray-500">
         <x-table-header :header=$studentTeachersTableHeader></x-table-header>
         <tboby class="table-body-styling">
