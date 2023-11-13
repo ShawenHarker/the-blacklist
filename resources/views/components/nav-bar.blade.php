@@ -5,17 +5,9 @@
             'url' => 'dashboard',
         ],
         [
-            'name' => 'Students',
-            'url' => 'dashboard/student-teachers',
-        ],
-        [
             'name' => 'Schools',
             'url' => 'dashboard/schools',
         ],
-        [
-            'name' => 'BlackListed Students',
-            'url' => 'dashboard/blacklisted-student-teachers',
-        ]
     ]
 ?>
 

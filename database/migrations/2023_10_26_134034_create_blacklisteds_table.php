@@ -10,13 +10,13 @@ return new class extends Migration
     {
         Schema::create('blacklisteds', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
             $table->string('reason');
+            $table->foreignId('student_teacher_id');
+            $table->foreignId('school_id');
             $table->string('image')->nullable();
             $table->string('mp3')->nullable();
             $table->string('video')->nullable();
-            $table->date('created_at')->nullable();
-            $table->date('updated_at')->nullable();
+            $table->timestamps();   
         });
     }
 

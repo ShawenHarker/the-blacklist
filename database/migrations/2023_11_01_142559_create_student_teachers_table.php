@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('student_teachers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('school_id')->nullable()->default(null);
             $table->string('first_name');
             $table->string('last_name');
             $table->string('location');
-            $table->boolean('is_blacklisted')->default(false);
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
         });
