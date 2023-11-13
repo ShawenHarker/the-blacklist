@@ -13,20 +13,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('role_id');
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('location');
-            $table->string('university');
-            $table->boolean('is_admin')->default(false);
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email', 150)->unique();
+            $table->string('password')->nullable();
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('users');
