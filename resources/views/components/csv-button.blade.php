@@ -1,3 +1,5 @@
 <button class="add-button">
-    CSV
+    <a href="{{ route('student.importForm') }}">
+        CSV
+    </a>
 </button>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\School;
 use App\Models\StudentTeacher;
+use App\Imports\StudentTeachersImport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StudentTeacherController extends Controller
 {
@@ -38,6 +40,22 @@ class StudentTeacherController extends Controller
         } else {
             StudentTeacher::create($attributes);
             return redirect(route('dashboard'))->with('success', 'You have successfully added a new student!');
+        }
+    }
+
+    public function importForm()
+    {
+        return view('student-teachers.importForm');
+    }
+
+    public function import()
+    {
+        try {
+            Excel::import(new StudentTeachersImport, request()->file('csv_file'), null, \Maatwebsite\Excel\Excel::CSV);
+
+            return redirect(route('dashboard'))->with('success', 'You have successfully added new students!');
+        } catch (\Exception $e) {
+            return redirect(route('dashboard'))->with('error', 'Error importing students: ' . $e->getMessage());
         }
     }
 

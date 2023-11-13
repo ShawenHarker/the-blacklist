@@ -16,8 +16,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('location');
-            $table->date('created_at')->nullable();
-            $table->date('updated_at')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -16,6 +16,12 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::post('students/add-new-student', [StudentTeacherController::class, 'store'])
         ->name('student.store');
 
+    Route::get('students/add-new-students', [StudentTeacherController::class, 'importForm'])
+        ->name('student.importForm');
+
+    Route::post('students/add-new-students', [StudentTeacherController::class, 'import'])
+        ->name('student.import');
+
     Route::get('students/view-student/{studentTeacher:id}', [StudentTeacherController::class, 'show'])
         ->name('student.show');
 
